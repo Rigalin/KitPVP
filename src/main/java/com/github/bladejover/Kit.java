@@ -24,10 +24,11 @@ public class Kit {
     public Kit(String name, List<String> itemData) {
         for(String metadata : itemData) {
             if(metadata.contains(":")) {
-                String[] data = metadata.split(":");
+                String[] data = metadata.split(":"); 
+                // Split a line of text that says "DIAMOND_SWORD:1" into new String[] { "DIAMOND_SWORD", "1" };
                 items.add(new ItemStack(
-                        Material.getMaterial(data[0]),
-                        Integer.parseInt(data[1])
+                        Material.getMaterial(data[0].toUpperCase()),  // Item name
+                        Integer.parseInt(data[1])       // Item quantity
                 ));
             }
         }
