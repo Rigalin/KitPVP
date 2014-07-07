@@ -31,10 +31,9 @@ public class Cooldown {
     private static long calculateRemainder(Long expireTime) {
         return expireTime != null ? expireTime - System.currentTimeMillis() : Long.MIN_VALUE;
     }
-    long timeInMilleseconds = 21600000;
     if(player.hasPermission("nova.donator")){
         Cooldown.tryCooldown(player, timeInMilliseconds / 2);
     } else{
-        Cooldown.tryCooldown(player, timeInMilliseconds);
+        Cooldown.tryCooldown(player, timeInMilliseconds); 
     }
 }
