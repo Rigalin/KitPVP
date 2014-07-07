@@ -1,4 +1,4 @@
-package
+package com.github.bladejover;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
