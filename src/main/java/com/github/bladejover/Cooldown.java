@@ -1,4 +1,5 @@
 package com.github.bladejover;
+package com.github.bladejover;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
@@ -16,9 +17,9 @@ public class Cooldown {
                 cooldowns.put(player.getName(), key, System.currentTimeMillis() + delay));
     }
 
-    public static boolean tryCooldown(Player player, String key, long delay) {
+    public static boolean tryCooldown(Player player, String key) {
         if (getCooldown(player, key) <= 0) {
-            setCooldown(player, key, delay);
+            setCooldown(player, key, getCooldown(player));
             return true;
         }
         return false;
@@ -31,9 +32,11 @@ public class Cooldown {
     private static long calculateRemainder(Long expireTime) {
         return expireTime != null ? expireTime - System.currentTimeMillis() : Long.MIN_VALUE;
     }
-    if(player.hasPermission("nova.donator")){
-        Cooldown.tryCooldown(player, timeInMilliseconds / 2);
-    } else{
-        Cooldown.tryCooldown(player, timeInMilliseconds); 
+
+    public long getCooldown(Player player) {
+     long cooldown = 86400000;
+     if(player.hasPermission("nova.donator"))
+          return cooldown / 2;
+     return cooldown;
     }
 }
